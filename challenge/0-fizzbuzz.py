@@ -1,7 +1,19 @@
 #!/usr/bin/python3
+""" FizzBuzz
+"""
 import sys
 
-def fizzbuzz(n: int) -> str:
+
+def fizzbuzz(n):
+    """
+    Print numbers from 1 to n separated by a space.
+    - Multiples of 3  -> "Fizz"
+    - Multiples of 5  -> "Buzz"
+    - Multiples of 15 -> "FizzBuzz"
+    """
+    if n < 1:
+        return
+
     out = []
     for i in range(1, n + 1):
         if i % 15 == 0:
@@ -12,8 +24,15 @@ def fizzbuzz(n: int) -> str:
             out.append("Buzz")
         else:
             out.append(str(i))
-    return " ".join(out)
+    print(" ".join(out))
+
 
 if __name__ == "__main__":
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 100
-    print(fizzbuzz(n))
+    if len(sys.argv) <= 1:
+        print("Missing number")
+        print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 50")
+        sys.exit(1)
+
+    number = int(sys.argv[1])
+    fizzbuzz(number)
